@@ -28,9 +28,9 @@ export function CtaButtons({ onlyfans, chatterbot }: CtaButtonsProps) {
         href={onlyfans}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full bg-blue-500 text-white font-medium text-sm transition-all duration-300 hover:bg-blue-400 hover:scale-[1.02]"
+        className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full text-white font-medium text-sm transition-all duration-300 hover:scale-[1.02]"
+        style={{ background: "linear-gradient(135deg, #e91e8c 0%, #c2006e 100%)" }}
       >
-        <OnlyFansIcon className="w-5 h-5" />
         Message me
       </a>
       {/* <a
