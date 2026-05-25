@@ -37,7 +37,7 @@ export const metadata = {
   openGraph: {
     title: model.name,
     description: model.description,
-    images: [`/models/${model.username}/WhatsApp Image 2026-05-13 at 11.31.47 (1).jpeg`],
+    images: ['/og-image.jpg'],
   },
 };
 
