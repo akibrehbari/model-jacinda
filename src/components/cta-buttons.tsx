@@ -33,6 +33,15 @@ export function CtaButtons({ onlyfans, chatterbot }: CtaButtonsProps) {
       >
         Message me
       </a>
+      <a
+        href="https://collabstr.com/jacindatravels?ref=t"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full text-white font-medium text-sm transition-all duration-300 hover:scale-[1.02]"
+        style={{ background: "linear-gradient(135deg, #6c3fc5 0%, #4a22a0 100%)" }}
+      >
+        Collabstr
+      </a>
       {/* <a
         href={chatterbot}
         target="_blank"
