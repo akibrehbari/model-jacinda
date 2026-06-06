@@ -3,7 +3,7 @@ import { join } from "path";
 import models from "@/data/models.json";
 import { HeroCarousel } from "@/components/hero-carousel";
 import { SocialLinks } from "@/components/social-links";
-import { CtaButtons } from "@/components/cta-buttons";
+import { ButterflyGame } from "@/components/butterfly-game";
 import { StarsBackground } from "@/components/stars-background";
 
 const model = models[0];
@@ -64,7 +64,7 @@ export default function ModelPage() {
           {model.description}
         </p>
 
-        <CtaButtons onlyfans={model.onlyfans} chatterbot={model.chatterbot} />
+        <ButterflyGame />
 
         <div className="mt-8">
           <SocialLinks socials={model.socials as Record<string, string>} />
