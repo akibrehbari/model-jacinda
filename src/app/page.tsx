@@ -57,10 +57,7 @@ export default function ModelPage() {
         {model.tagline}
       </p>
 
-      <h2 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4 leading-tight">
-        {model.heading}
-      </h2>
-      <p className="text-white/70 text-xl sm:text-2xl text-center max-w-xs leading-relaxed font-medium">
+      <p className="font-heading text-4xl sm:text-5xl font-bold text-center max-w-xs leading-tight">
         {model.description}
       </p>
 
