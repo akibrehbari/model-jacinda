@@ -1,35 +1,37 @@
-import { readdirSync } from "fs";
-import { join } from "path";
 import models from "@/data/models.json";
-import { HeroCarousel } from "@/components/hero-carousel";
 import { SocialLinks } from "@/components/social-links";
 import { ButterflyGame } from "@/components/butterfly-game";
-import { StarsBackground } from "@/components/stars-background";
 
 const model = models[0];
 
-const SUPPORTED = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
-
-function shuffleArray<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function getModelPhotos(): string[] {
-  try {
-    const dir = join(process.cwd(), "public", "models", model.username);
-    const photos = readdirSync(dir)
-      .filter((f) => SUPPORTED.has(f.slice(f.lastIndexOf(".")).toLowerCase()))
-      .map((f) => `/models/${model.username}/${f}`);
-    return shuffleArray(photos);
-  } catch {
-    return [];
-  }
-}
+const gradients: Record<string, string> = {
+  a: "from-[#3d1f4a] via-[#1a1a2e] to-[#2a1850]",
+  b: "from-[#1a3d3d] via-[#1a1a2e] to-[#1a2d50]",
+  c: "from-[#3d3a1a] via-[#1a1a2e] to-[#3d1f3d]",
+  d: "from-[#1a3d28] via-[#1a1a2e] to-[#3d1a40]",
+  e: "from-[#2a1a4a] via-[#1a1a2e] to-[#1a3d38]",
+  f: "from-[#3d1a28] via-[#1a1a2e] to-[#1a3d3d]",
+  g: "from-[#1a3d28] via-[#1a1a2e] to-[#1a2850]",
+  h: "from-[#3d2a1a] via-[#1a1a2e] to-[#1a3d40]",
+  i: "from-[#1a283d] via-[#1a1a2e] to-[#3d1a38]",
+  j: "from-[#3d1a1a] via-[#1a1a2e] to-[#1a3d50]",
+  k: "from-[#1a3d30] via-[#1a1a2e] to-[#3d1a3d]",
+  l: "from-[#1a3d28] via-[#1a1a2e] to-[#1a2850]",
+  m: "from-[#3d1a38] via-[#1a1a2e] to-[#1a3d30]",
+  n: "from-[#1a3d3d] via-[#1a1a2e] to-[#3d1a28]",
+  o: "from-[#281a3d] via-[#1a1a2e] to-[#1a3d40]",
+  p: "from-[#3d281a] via-[#1a1a2e] to-[#1a303d]",
+  q: "from-[#1a3d28] via-[#1a1a2e] to-[#3d1a40]",
+  r: "from-[#3d1a30] via-[#1a1a2e] to-[#1a3d3d]",
+  s: "from-[#1a303d] via-[#1a1a2e] to-[#3d1a28]",
+  t: "from-[#3d3a1a] via-[#1a1a2e] to-[#1a283d]",
+  u: "from-[#1a3d38] via-[#1a1a2e] to-[#3d1a30]",
+  v: "from-[#301a3d] via-[#1a1a2e] to-[#1a3d28]",
+  w: "from-[#1a3d1a] via-[#1a1a2e] to-[#3d1a3d]",
+  x: "from-[#3d1a40] via-[#1a1a2e] to-[#1a3d28]",
+  y: "from-[#1a383d] via-[#1a1a2e] to-[#3d2a1a]",
+  z: "from-[#3d1a28] via-[#1a1a2e] to-[#1a3d38]",
+};
 
 export const metadata = {
   title: model.name,
@@ -37,38 +39,35 @@ export const metadata = {
   openGraph: {
     title: model.name,
     description: model.description,
-    images: ['/og-image.jpg'],
+    images: ["/og-image.jpg"],
   },
 };
 
 export default function ModelPage() {
-  const photos = getModelPhotos();
+  const gradient = gradients[model.username.charAt(0).toLowerCase()] ?? gradients["a"];
 
   return (
-    <main className="relative flex flex-col items-center justify-center px-6 py-12 text-white min-h-screen bg-[#05051a]">
-      <StarsBackground />
-      <div className="relative z-10 flex flex-col items-center w-full">
-        <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-center mb-2">
-          {model.name}
-        </h1>
-        <p className="text-white/50 text-sm sm:text-base text-center mb-10 max-w-xs">
-          {model.tagline}
-        </p>
+    <main
+      className={`flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-br ${gradient} text-white min-h-screen`}
+    >
+      <h1 className="font-heading text-5xl sm:text-6xl font-bold tracking-tight text-center mb-3">
+        {model.name}
+      </h1>
+      <p className="text-white/50 text-sm sm:text-base text-center mb-16 max-w-xs">
+        {model.tagline}
+      </p>
 
-        <HeroCarousel photos={photos} name={model.name} />
+      <h2 className="font-heading text-4xl sm:text-5xl font-bold text-center mb-4 leading-tight">
+        {model.heading}
+      </h2>
+      <p className="text-white/70 text-xl sm:text-2xl text-center max-w-xs leading-relaxed font-medium">
+        {model.description}
+      </p>
 
-        <h2 className="font-heading text-xl sm:text-2xl font-semibold text-center mt-10 mb-2">
-          {model.heading}
-        </h2>
-        <p className="text-white/60 text-sm sm:text-base text-center max-w-sm leading-relaxed">
-          {model.description}
-        </p>
+      <ButterflyGame />
 
-        <ButterflyGame />
-
-        <div className="mt-8">
-          <SocialLinks socials={model.socials as Record<string, string>} />
-        </div>
+      <div className="mt-10">
+        <SocialLinks socials={model.socials as Record<string, string>} />
       </div>
     </main>
   );
