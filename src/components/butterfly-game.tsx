@@ -74,7 +74,7 @@ export function ButterflyGame() {
           }}
           aria-label="Catch the emoji"
         >
-          🐀
+          🍑
         </button>
       )}
 

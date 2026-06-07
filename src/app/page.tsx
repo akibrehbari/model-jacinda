@@ -48,16 +48,19 @@ export default function ModelPage() {
 
   return (
     <main
-      className={`flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-br ${gradient} text-white min-h-screen`}
+      className={`flex flex-col items-center justify-center px-4 py-12 bg-gradient-to-br ${gradient} text-white min-h-screen`}
     >
       <h1 className="font-heading text-5xl sm:text-6xl font-bold tracking-tight text-center mb-3">
         {model.name}
       </h1>
-      <p className="text-white/50 text-sm sm:text-base text-center mb-16 max-w-xs">
+      <p className="text-white/50 text-sm text-center mb-12 max-w-xs">
         {model.tagline}
       </p>
 
-      <p className="font-heading text-4xl sm:text-5xl font-bold text-center max-w-xs leading-tight">
+      <p
+        className="font-heading font-bold text-center whitespace-nowrap mb-12"
+        style={{ fontSize: "clamp(1.6rem, 7.5vw, 3rem)" }}
+      >
         {model.description}
       </p>
 
