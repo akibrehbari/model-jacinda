@@ -3,7 +3,6 @@ import type { NextRequest } from "next/server";
 
 const BLOCKED_AGENTS = [
   "facebookexternalhit","facebot","twitterbot","linkedinbot",
-  "instagram","pinterest","slackbot","telegrambot","whatsapp",
   "googlebot","bingbot","yandexbot","duckduckbot","baiduspider",
   "ahrefsbot","semrushbot","mj12bot","dotbot","rogerbot",
   "scrapy","curl","wget","python-requests","axios","go-http-client",
